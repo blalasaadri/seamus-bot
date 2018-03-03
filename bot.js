@@ -13,7 +13,7 @@ const twitter = new Twit({
 const replyText = '@gormanseamus Have you been hacked? :-(';
 
 (() => {
-    const server = new Hapi.Server({ port: process.env.PORT || 3000, host: 'localhost' });
+    const server = new Hapi.Server({ port: process.env.PORT || 3000 });
 
     server.start()
         .then(() => console.log(`Server running at: ${server.info.uri}`));
