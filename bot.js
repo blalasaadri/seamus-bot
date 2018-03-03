@@ -1,5 +1,7 @@
+'use strict';
 const Twit = require('twit');
 const moment = require('moment');
+const Hapi = require('hapi');
 
 const config = require('./config');
 
@@ -9,6 +11,18 @@ const twitter = new Twit({
     timeout_ms: retryIntervalInMs,
 });
 const replyText = '@gormanseamus Have you been hacked? :-(';
+
+(() => {
+    const server = new Hapi.Server({ port: process.env.PORT || 3000, host: 'localhost' });
+
+    server.start()
+        .then(() => console.log(`Server running at: ${server.info.uri}`));
+    server.route({
+        method: 'GET',
+        path: '/',
+        handler: () => 'I am alive'
+    });
+})();
 
 setInterval(() => 
     twitter.get('search/tweets', { 
