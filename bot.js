@@ -27,7 +27,7 @@ const replyText = '@gormanseamus Have you been hacked? :-(';
 setInterval(() => 
     twitter.get('search/tweets', { 
             q: `from:@gormanseamus -filter:retweets since:${moment().subtract(1, 'days').format('YYYY-MM-DD')}`, 
-            count: 10, 
+            count: 100,
             result_type: 'recent'
         }).catch(console.err)
         .then(res => {
@@ -44,11 +44,10 @@ setInterval(() =>
                 .filter(tweet => {
                     const tweetTime = moment(tweet.created_at, 'ddd MMM DD HH:mm:ss Z');
                     const isTweetNew = tweetTime.isAfter(lastCheck);
-                    console.log(`Tweet https://twitter.com/gormanseamus/status/${tweet.id_str} was posted on ${tweetTime} and I'm looking for tweets since ${lastCheck}.`);
-                    console.log(`That means I will${isTweetNew ? '' : ' not'} reply.`);
+                    //console.log(`Tweet https://twitter.com/gormanseamus/status/${tweet.id_str} was posted on ${tweetTime} and I'm looking for tweets since ${lastCheck}. That means I will ${isTweetNew ? 'reply' : 'not reply'}.`);
                     return isTweetNew;
                 }).map(tweet => {
-                    console.log(`That tweet was: "${tweet.text}" (url: https://twitter.com/gormanseamus/status/${tweet.id_str})`);
+                    console.log(`Replying to tweet: "${tweet.text}" (url: https://twitter.com/gormanseamus/status/${tweet.id_str})`);
                     return twitter.post('statuses/update', { status: replyText });
                 }));
         })
