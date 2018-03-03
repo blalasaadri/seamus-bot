@@ -1,4 +1,5 @@
 'use strict';
+require ('newrelic');
 const Twit = require('twit');
 const moment = require('moment');
 const Hapi = require('hapi');
