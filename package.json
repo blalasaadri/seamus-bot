@@ -1,0 +1,19 @@
+{
+  "name": "seamus-bot",
+  "version": "1.0.0",
+  "description": "A bot which will ask Seamus Gorman \"have you been hacked\" all the time",
+  "main": "bot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Alasdair Collinson",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/blalasaadri/seamus-bot.git"
+  },
+  "dependencies": {
+    "moment": "^2.21.0",
+    "twit": "^2.2.9"
+  }
+}
