@@ -12,7 +12,11 @@ const twitter = new Twit({
 });
 
 const possibleReplies = [
-    '@gormanseamus Have you been hacked? :-('
+    '@gormanseamus Have you been hacked? :-( #DontHackSeamus',
+    'Oh dear, @gormanseamus may have been hacked. O_o #DontHackSeamus',
+    'Were you hacked, @gormanseamus? #DontHackSeamus',
+    'Hm... That doesn\'t sound like the real @gormanseamus. #DontHackSeamus',
+    'Hey nasty H4xx0rs, leave @gormanseamus alone! #DontHackSeamus'
 ];
 const replyText = () => {
     return possibleReplies[Math.floor(Math.random() * possibleReplies.length)];
