@@ -58,7 +58,7 @@ setInterval(() =>
                     return isTweetNew;
                 }).map(tweet => {
                     console.log(`Replying to tweet: "${tweet.text}" (url: https://twitter.com/gormanseamus/status/${tweet.id_str})`);
-                    return twitter.post('statuses/update', { status: replyText() });
+                    return twitter.post('statuses/update', { status: replyText(), in_reply_to_status_id: tweet.id_str });
                 }));
         })
         .catch(console.err)
