@@ -16,7 +16,13 @@ const possibleReplies = [
     'Oh dear, @gormanseamus may have been hacked. O_o #DontHackSeamus',
     'Were you hacked, @gormanseamus? #DontHackSeamus',
     'Hm... That doesn\'t sound like the real @gormanseamus. #DontHackSeamus',
-    'Hey nasty H4xx0rs, leave @gormanseamus alone! #DontHackSeamus'
+    'Hey nasty H4xx0rs, leave @gormanseamus alone! #DontHackSeamus',
+    'Could it be... that @gormanseamus... has been hacked? #DontHackSeamus',
+    'That looks suspiciously like @gormanseamus has been hacked! (;¬_¬) #DontHackSeamus',
+    'I may just be a bot, but even I can tell that @gormanseamus has been hacked there. #DontHackSeamus',
+    'H4xx0rs? ಠ_ರೃ Leave @gormanseamus alone!!! #DontHackSeamus',
+    'Whoa, whoa, whoa. Time out! You aren\'t @gormanseamus, are you? #DontHackSeamus',
+    'That\'s not very #Hufflepuff of you, @gormanseamus. Have you been hacked? #DontHackSeamus',
 ];
 const replyText = () => {
     return possibleReplies[Math.floor(Math.random() * possibleReplies.length)];
