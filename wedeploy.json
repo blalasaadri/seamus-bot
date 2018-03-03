@@ -1,0 +1,5 @@
+{
+    "id": "seamus-bot",
+    "port": 8080,
+    "memory": 128
+}
