@@ -13,6 +13,7 @@
     "url": "https://github.com/blalasaadri/seamus-bot.git"
   },
   "dependencies": {
+    "dotenv": "^5.0.1",
     "moment": "^2.21.0",
     "twit": "^2.2.9"
   }
