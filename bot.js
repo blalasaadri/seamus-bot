@@ -10,7 +10,13 @@ const twitter = new Twit({
     ...config,
     timeout_ms: retryIntervalInMs,
 });
-const replyText = '@gormanseamus Have you been hacked? :-(';
+
+const possibleReplies = [
+    '@gormanseamus Have you been hacked? :-('
+];
+const replyText = () => {
+    return possibleReplies[Math.floor(Math.random() * possibleReplies.length)];
+};
 
 (() => {
     const server = new Hapi.Server({ port: process.env.PORT || 3000 });
@@ -48,7 +54,7 @@ setInterval(() =>
                     return isTweetNew;
                 }).map(tweet => {
                     console.log(`Replying to tweet: "${tweet.text}" (url: https://twitter.com/gormanseamus/status/${tweet.id_str})`);
-                    return twitter.post('statuses/update', { status: replyText });
+                    return twitter.post('statuses/update', { status: replyText() });
                 }));
         })
         .catch(console.err)
