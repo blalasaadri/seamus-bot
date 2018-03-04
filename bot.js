@@ -44,7 +44,8 @@ const replyText = () => {
     });
 })();
 
-setInterval(() => 
+setInterval(() => {
+    const lastCheck = moment().subtract(retryIntervalInMs, 'ms').subtract(5, 's');
     twitter.get('search/tweets', { 
             q: `from:@gormanseamus -filter:retweets since:${moment().subtract(1, 'days').format('YYYY-MM-DD')}`, 
             count: 100,
@@ -52,26 +53,24 @@ setInterval(() =>
         }).catch(console.err)
         .then(res => {
             const { data } = res;
-            //console.log(`Found ${data.statuses.length} tweets in total`);
+            //console.log(`[${moment().format(LOG_TIMESTAMP_FORMAT)}] Found ${data.statuses.length} tweets in total`);
             const nonReplyTweets = data.statuses
                 .filter(tweet => tweet.in_reply_to_status_id === null)
                 .filter(tweet => tweet.in_reply_to_user_id === null);
-            //console.log(`Found ${nonReplyTweets.length} tweets that weren't replies`);
+            //console.log(`[${moment().format(LOG_TIMESTAMP_FORMAT)}] Found ${nonReplyTweets.length} tweets that weren't replies`);
             return nonReplyTweets.map(({ id_str, text, created_at }) => ({ id_str, text, created_at }));
-        }).then(res => {
-            const lastCheck = moment().subtract(retryIntervalInMs, 'ms');
-            return Promise.all(res
+        }).then(res => Promise.all(res
                 .filter(tweet => {
                     const tweetTime = moment(tweet.created_at, 'ddd MMM DD HH:mm:ss Z');
                     const isTweetNew = tweetTime.isAfter(lastCheck);
-                    //console.log(`Tweet https://twitter.com/gormanseamus/status/${tweet.id_str} was posted on ${tweetTime} and I'm looking for tweets since ${lastCheck}. That means I will ${isTweetNew ? 'reply' : 'not reply'}.`);
+                    //console.log(`[${moment().format(LOG_TIMESTAMP_FORMAT)}] Tweet https://twitter.com/gormanseamus/status/${tweet.id_str} was posted on ${tweetTime} and I'm looking for tweets since ${lastCheck}. That means I will ${isTweetNew ? 'reply' : 'not reply'}.`);
                     return isTweetNew;
                 }).map(tweet => {
                     console.log(`[${moment().format(LOG_TIMESTAMP_FORMAT)}] Replying to tweet: "${tweet.text}" (url: https://twitter.com/gormanseamus/status/${tweet.id_str})`);
                     return twitter.post('statuses/update', { status: replyText(), in_reply_to_status_id: tweet.id_str });
                 }));
-        })
-        .catch(console.err)
+        ).catch(console.err)
         .then(values => console.log(`[${moment().format(LOG_TIMESTAMP_FORMAT)}] ${values.length} concerned replies sent`)),
         retryIntervalInMs
-    );
+    }
+);
