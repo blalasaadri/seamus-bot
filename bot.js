@@ -14,9 +14,9 @@ const twitter = new Twit({
 
 const possibleReplies = [
     '@gormanseamus Have you been hacked? :-( #DontHackSeamus',
-    //'Oh dear, @gormanseamus may have been hacked. O_o #DontHackSeamus',
-    //'Were you hacked, @gormanseamus? #DontHackSeamus',
-    //'Hm... That doesn\'t sound like the real @gormanseamus. #DontHackSeamus',
+    'Oh dear, @gormanseamus may have been hacked. O_o #DontHackSeamus',
+    'Were you hacked, @gormanseamus? #DontHackSeamus',
+    'Hm... That doesn\'t sound like the real @gormanseamus. #DontHackSeamus',
     'Hey nasty H4xx0rs, leave @gormanseamus alone! #DontHackSeamus',
     'Could it be... that @gormanseamus... has been hacked? #DontHackSeamus',
     'That looks suspiciously like @gormanseamus has been hacked! (;¬_¬) #DontHackSeamus',
@@ -27,6 +27,11 @@ const possibleReplies = [
     'Eeny, meeny, miny, moe. @gormanseamus, I don\'t think that\'s you! #DontHackSeamus',
     '@gormanseamus is a friend, not food. #DontHackSeamus',
     'Who are you? You\'re not @gormanseamus! Or are you? 😕 #DontHackSeamus',
+    'Is it really you, the S-Master? I\'m unsure... May have been hacked. #DontHackSeamus',
+    'Test question to make sure you haven\'t been hacked, @gormanseamus: What are your thoughts on Cars 3? #DontHackSeamus',
+    'Are you wearing your jelly fish socks again? Or are you actually not @gormanseamus at all? #DontHackSeamus',
+    'Butterbeer, butterbear, is the real @gormanseamus here? #DontHackSeamus',
+    'Test question, to make sure you haven\'t been hacked, @gormanseamus: What is the difference between turtles and tortoises? #DontHackSeamus',
 ];
 const replyText = () => {
     return possibleReplies[Math.floor(Math.random() * possibleReplies.length)];
