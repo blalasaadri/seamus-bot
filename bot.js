@@ -52,13 +52,13 @@ const replyText = () => {
 let currentTime = moment();
 let lastCheck = currentTime;
 setInterval(() => {
+        currentTime = moment();
         twitter.get('search/tweets', {
                 q: `from:@gormanseamus -filter:retweets since:${moment().subtract(1, 'days').format('YYYY-MM-DD')}`, 
                 count: 100,
                 result_type: 'recent'
             }).catch(console.err)
             .then(res => {
-                currentTime = moment();
                 const { data } = res;
                 //console.log(`[${moment().format(LOG_TIMESTAMP_FORMAT)}] Found ${data.statuses.length} tweets in total`);
                 const nonReplyTweets = data.statuses
@@ -75,7 +75,8 @@ setInterval(() => {
                     }).map(tweet => {
                         console.log(`[${moment().format(LOG_TIMESTAMP_FORMAT)}] Replying to tweet: "${tweet.text}" (url: https://twitter.com/gormanseamus/status/${tweet.id_str})`);
                         return twitter.post('statuses/update', { status: replyText(), in_reply_to_status_id: tweet.id_str });
-                    }))
+                    })
+                )
             ).catch(console.err)
             .then(values => console.log(`[${moment().format(LOG_TIMESTAMP_FORMAT)}] ${values.length} concerned replies sent`));
         lastCheck = currentTime;
