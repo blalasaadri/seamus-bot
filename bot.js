@@ -25,7 +25,7 @@ const possibleReplies = [
     'Whoa, whoa, whoa. Time out! You aren\'t @gormanseamus, are you? #DontHackSeamus',
     'That\'s not very #Hufflepuff of you, @gormanseamus. Have you been hacked? #DontHackSeamus',
     'Eeny, meeny, miny, moe. @gormanseamus, I don\'t think that\'s you! #DontHackSeamus',
-    '@gormanseamus is a friend, not food. #DontHackSeamus',
+    'Hey! @gormanseamus is a friend, not food! #DontHackSeamus',
     'Who are you? You\'re not @gormanseamus! Or are you? 😕 #DontHackSeamus',
     'Is it really you, the S-Master? I\'m unsure... May have been hacked. #DontHackSeamus',
     'Test question to make sure you haven\'t been hacked, @gormanseamus: What are your thoughts on Cars 3? #DontHackSeamus',
