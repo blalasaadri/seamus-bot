@@ -4,7 +4,7 @@ const moment = require('moment');
 const Hapi = require('hapi');
 
 const config = require('./config');
-const replyText = require('./repies');
+const replyText = require('./replies');
 
 const LOG_TIMESTAMP_FORMAT = 'YYYY-MM-DD HH:mm:ss Z';
 const retryIntervalInMs = 60*1000;
